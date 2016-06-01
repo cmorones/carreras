@@ -15,8 +15,8 @@
         $cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
         $cs->registerCssFile($baseUrl.'/css/telcel-styles.css');
         $cs->registerCssFile($baseUrl.'/css/easy-slider.css');
-        $cs->registerCssFile($baseUrl.'/css/default.css');
-       // $cs->registerCssFile($baseUrl.'/css/main.css');
+       // $cs->registerCssFile($baseUrl.'/css/default.css');
+       // $cs->registerCssFile($baseUrl.'/css/stylefront.css');
         $cs->registerCssFile($baseUrl.'/css/colorbox.css');
         $cs->registerCssFile($baseUrl.'/css/jquery-confirm.css');
         $cs->registerCssFile($baseUrl.'/css/themes/alertify.core.css');

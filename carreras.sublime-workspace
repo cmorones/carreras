@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"nu",
+				"numf"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"sta",
+				"static"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"tipo",
+				"tipo_usuario"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"cuen",
+				"cuentaNinos"
+			],
+			[
 				"he",
 				"height"
 			],
@@ -40,67 +72,50 @@
 	"buffers":
 	[
 		{
-			"file": "protected/controllers/RegistrosControllerresp.php",
-			"settings":
-			{
-				"buffer_size": 5758,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "protected/controllers/RegistrosController.php",
 			"settings":
 			{
-				"buffer_size": 4250,
+				"buffer_size": 4715,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "<?php \n\n$validado = Yii::app()->getSession()->get('valido1');\n\nif ($validado) {\n    \n\n\n?>\n<div class=\"telcel-menu\">\n	<div class=\"telcel-menu-cont\">\n        <ul>\n            <li><a href=\"<?php echo CController::createUrl('site/index',array('valido'=>$validado)); ?>\">Volver</a></li>\n        </ul>\n        <div class=\"session\">\n        	<img src=\"../images/user-icon.png\" />\n            <div class=\"session-info\">\n            	<p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>\n                <a href=\"<?php echo CController::createUrl('site/logout'); ?>\">Cerrar Sesión</a>                \n            </div>\n        </div>\n    </div>\n</div>\n\n<?php echo $this->renderPartial('_form', array(\n    'model'=>$model,\n    'carreras'=>$carreras,\n    'distancia'=>$distancia\n    )); \n\n}\n?>\n\n",
-			"file": "protected/views/registros/create.php",
-			"file_size": 798,
-			"file_write_time": 131091947126545609,
+			"file": "/home/cesar/Descargas/cifradophp/Aes.php",
 			"settings":
 			{
-				"buffer_size": 797,
+				"buffer_size": 7337,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "<?php \n\n$validado = Yii::app()->getSession()->get('valido1');\n\nif ($validado) {\n    \n\n\n?>\n<div class=\"telcel-menu\">\n	<div class=\"telcel-menu-cont\">\n        <ul>\n            <li><a href=\"<?php echo CController::createUrl('site/index',array('valido'=>$validado)); ?>\">Volver</a></li>\n        </ul>\n        <div class=\"session\">\n        	<img src=\"../images/user-icon.png\" />\n            <div class=\"session-info\">\n            	<p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>\n                <a href=\"<?php echo CController::createUrl('site/logout'); ?>\">Cerrar Sesión</a>                \n            </div>\n        </div>\n    </div>\n</div>\n<?php $this->widget('zii.widgets.CDetailView', array(\n	'data'=>$model,\n	'attributes'=>array(\n		'id',\n		'carrera',\n		'distancia',\n		'tipo_usuario',\n		'id_empleado',\n		'id_invitado',\n		'nombre',\n		'apellido_paterno',\n		'apellido_materno',\n		'email',\n		'edad',\n		'sexo',\n		'ciudad',\n		'telefono',\n		'talla',\n		'status',\n		'paypal',\n		'sindicalizado',\n		'dorsal',\n		'fecha',\n	),\n)); ?>\n\n<h1>Se registro correctamente!!!!</h1>\n\n",
-			"file": "protected/views/registros/view.php",
-			"file_size": 1080,
-			"file_write_time": 131091949868479014,
+			"file": "/home/cesar/Descargas/cifradophp/AesCtr.php",
 			"settings":
 			{
-				"buffer_size": 1079,
+				"buffer_size": 7651,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "\n<?php\n	$empleado = Yii::app()->getSession()->get('emp');\n?>\n<div class=\"telcel-wrapper\">\n    <div class=\"telcel-container\"> \n        <div id=\"sus\" class=\"telcel-sus telcel-section\">\n            <div class=\"telcel-sus-cont\">\n                <h2 class=\"header\">INSCRÍBETE AQUÍ</h2>\n                \n                 \n<div class=\"form\">\n\n<?php $form=$this->beginWidget('CActiveForm', array(\n	'id'=>'registros-form',\n	'enableAjaxValidation'=>false,\n)); ?>\n\n	\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'carrera'); ?>\n	    <?php echo $form->dropDownList($model, 'carrera', $carreras, array('id' => 'carreras'));?><bR>\n		<?php echo $form->error($model,'carrera'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'distancia'); ?>\n		<?php echo $form->dropDownList($model, 'distancia', $distancia, array('id' => 'carreras'));?>\n		<?php echo $form->error($model,'distancia'); ?>\n	</div>\n\n	<!--<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'tipo_usuario'); ?>\n		<?php echo $form->textField($model,'tipo_usuario',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'tipo_usuario'); ?>\n	</div>\n		-->\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'id_empleado'); ?>\n		<strong><span style=\"color:red;\"><?=$empleado?></span></strong>\n	</div>\n\n<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'sindicalizado'); ?>\n		<?php \n		\n		$sindicalizado['falso']=\"Seleccionar\";\n		$sindicalizado[0]=\"NO\";\n		$sindicalizado[1]=\"SI\";\n		echo $form->dropDownList($model, 'sindicalizado', $sindicalizado, array('id' => 'sindicalizado'));?>\n		<?php echo $form->error($model,'sindicalizado'); ?>\n	</div>\n\n<!--	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'id_invitado'); ?>\n		<?php echo $form->textField($model,'id_invitado',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'id_invitado'); ?>\n	</div>-->\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'nombre'); ?>\n		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?><bR>\n		<?php echo $form->error($model,'nombre'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'apellido_paterno'); ?>\n		<?php echo $form->textField($model,'apellido_paterno',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'apellido_paterno'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'apellido_materno'); ?>\n		<?php echo $form->textField($model,'apellido_materno',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'apellido_materno'); ?>\n	</div>\n\n		<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'email'); ?>\n		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'email'); ?>\n	</div>\n\n		<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'fecha'); ?>\n		 <?php\n                        $this->widget('zii.widgets.jui.CJuiDatePicker', array(\n                            'model'=>$model,\n                            'attribute'=>'fecha',\n\n\n                            // additional javascript options for the date picker plugin\n                            'options' => array(\n                                'dateFormat'=>'yy-mm-dd',\n                                'showAnim' => 'fold',\n                                'changeMonth' => true,\n                                'changeYear' => true,\n                                'monthNames' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),\n                                'monthNamesShort' => array('Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'),\n                                'dayNames' => array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'),\n                                'dayNamesShort' => array('Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'),\n                                'dayNamesMin' => array('Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'),\n                                'yearRange' => '1970:2016'\n                            ),\n                            'htmlOptions' => array(\n                                'style' => 'height:30px;width:100px;',\n                                'id'=>'fecha',\n                                //'class'=>'span12'\n                               \n                            ),\n                        ));\n                      \n ?>\n		<?php echo $form->error($model,'fecha'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'sexo'); ?>\n		<?php \n		$sexo['falso']=\"Seleccionar\";\n		$sexo[1]=\"MASCULINO\";\n		$sexo[2]=\"FEMENINO\";\n		echo $form->dropDownList($model, 'sexo', $sexo, array('id' => 'sexo'));?>\n		\n		<?php echo $form->error($model,'sexo'); ?>\n	</div>\n\n\n\n\n\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'ciudad'); ?>\n		<?php echo $form->textField($model,'ciudad',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'ciudad'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'telefono'); ?>\n		<?php echo $form->textField($model,'telefono',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'telefono'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'talla'); ?>\n		<?php \n\n		$talla['falso']=\"Seleccionar\";\n		$talla[1]=\"CHICA\";\n		$talla[2]=\"MEDIANA\";\n		$talla[3]=\"GRANDE\";\n		echo $form->dropDownList($model, 'talla', $talla, array('id' => 'talla'));?>\n		\n		<?php echo $form->error($model,'talla'); ?>\n	</div>\n\n	\n\n	\n	<div class=\"submit-wrap\">\n		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Guardar'); ?>\n	</div>\n\n<?php $this->endWidget(); ?>\n\n</div><!-- form -->\n            </div>\n        </div>\n    </div>  \n</div>\n<div class=\"col-lg-4\">\n</div>\n<div class=\"col-lg-4\">\n <div class=\"links-otros\">\n	  \n      <a href=\"<?php echo CController::createUrl('catCarreras/create'); ?>\" class=\"btn-sm btn btn-info pull-left\"><i class=\"glyphicon glypicon-plus\"></i>Inscribir a un Invitado</a>\n      \n      <a href=\"<?php echo CController::createUrl('catCarreras/create'); ?>\" class=\"btn-sm btn btn-info pull-left\"><i class=\"glyphicon glypicon-plus\"></i>Inscribir a un Niño</a>\n</div>\n                        \n</div>\n                      ",
-			"file": "protected/views/registros/_form.php",
-			"file_size": 6406,
-			"file_write_time": 131091952614372438,
+			"file": "/home/cesar/Descargas/cifradophp/ejemploAes.php",
 			"settings":
 			{
-				"buffer_size": 6398,
+				"buffer_size": 1412,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/functions.js",
+			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 8417,
-				"line_ending": "Windows"
+				"buffer_size": 460,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/views/layouts/main.php",
+			"file": "/var/www/html/cifradophp/ejemploAes.php",
 			"settings":
 			{
-				"buffer_size": 1725,
+				"buffer_size": 1461,
 				"line_ending": "Unix"
 			}
 		},
@@ -108,15 +123,101 @@
 			"file": "protected/views/site/index.php",
 			"settings":
 			{
-				"buffer_size": 89891,
+				"buffer_size": 90715,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/config/main.php",
+			"file": "protected/views/layouts/main.php",
 			"settings":
 			{
-				"buffer_size": 2229,
+				"buffer_size": 1729,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/default.css",
+			"settings":
+			{
+				"buffer_size": 1946,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "a {\n    text-align: \n}",
+			"file": "css/stylefront.css",
+			"file_size": 0,
+			"file_write_time": 131092859740006426,
+			"settings":
+			{
+				"buffer_size": 22,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/telcel-styles.css",
+			"settings":
+			{
+				"buffer_size": 11964,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 2648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/bootstrap.min.css",
+			"settings":
+			{
+				"buffer_size": 122595,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/form.css",
+			"settings":
+			{
+				"buffer_size": 2787,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/registros/create.php",
+			"settings":
+			{
+				"buffer_size": 724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php \n\n\n\nif (Yii::app()->getSession()->get('valido1')==\"OK\") {\n\n?>\n<div class=\"telcel-menu\">\n	<div class=\"telcel-menu-cont\">\n        <ul>\n            <li><a href=\"<?php echo CController::createUrl('site/index'); ?>\">Volver</a></li>\n        </ul>\n        <div class=\"session\">\n        	<img src=\"<?php echo Yii::app()->request->baseUrl;?>/images/user-icon.png\" />\n            <div class=\"session-info\">\n            	<p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>\n                <a href=\"<?php echo CController::createUrl('site/logout'); ?>\">Cerrar Sesión</a>                \n            </div>\n        </div>\n    </div>\n</div>\n\n	<h1>Usted se a registrado Satifactoriamente</h1>\n\n    \n?>",
+			"file": "protected/views/registros/view2.php",
+			"file_size": 1456,
+			"file_write_time": 131092882325076839,
+			"settings":
+			{
+				"buffer_size": 706,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/registros/_yareg.php",
+			"settings":
+			{
+				"buffer_size": 1821,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/registros/_form.php",
+			"settings":
+			{
+				"buffer_size": 8036,
 				"line_ending": "Unix"
 			}
 		},
@@ -124,8 +225,33 @@
 			"file": "protected/models/Registros.php",
 			"settings":
 			{
-				"buffer_size": 4638,
+				"buffer_size": 4698,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/registrosresp/_form.php",
+			"settings":
+			{
+				"buffer_size": 6398,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/components/AesCtr.php",
+			"settings":
+			{
+				"buffer_size": 7651,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/components/Utilities.php",
+			"settings":
+			{
+				"buffer_size": 1580,
+				"line_ending": "Unix",
+				"name": "utilities.php"
 			}
 		}
 	],
@@ -164,6 +290,7 @@
 		"/var/www/html/carreras",
 		"/var/www/html/carreras/css",
 		"/var/www/html/carreras/css/plugins",
+		"/var/www/html/carreras/css/plugins/sweetalert",
 		"/var/www/html/carreras/js",
 		"/var/www/html/carreras/protected",
 		"/var/www/html/carreras/protected/components",
@@ -174,20 +301,31 @@
 		"/var/www/html/carreras/protected/views/catCarreras",
 		"/var/www/html/carreras/protected/views/detalleCarerra",
 		"/var/www/html/carreras/protected/views/layouts",
+		"/var/www/html/carreras/protected/views/registros",
+		"/var/www/html/carreras/protected/views/registrosresp",
+		"/var/www/html/carreras/protected/views/registrosresp2",
 		"/var/www/html/carreras/protected/views/site"
 	],
 	"file_history":
 	[
+		"/var/www/html/carreras/protected/views/registrosresp/_form.php",
+		"/var/www/html/carreras/protected/controllers/RegistrosController2.php",
+		"/var/www/html/ecom-yii/protected/controllers/CartController.php",
 		"/var/www/html/carreras/protected/views/site/index.php",
+		"/var/www/html/carreras/protected/views/registros/create.php",
 		"/var/www/html/carreras/protected/views/registros/_form.php",
-		"/var/www/html/carreras/protected/views/layouts/main.php",
 		"/var/www/html/carreras/protected/controllers/RegistrosController.php",
+		"/var/www/html/carreras/protected/controllers/RegistrosControllerresp.php",
+		"/var/www/html/carreras/protected/views/registros/view.php",
+		"/var/www/html/carreras/js/functions.js",
+		"/var/www/html/carreras/protected/views/layouts/main.php",
+		"/var/www/html/carreras/protected/config/main.php",
+		"/var/www/html/carreras/protected/models/Registros.php",
 		"/var/www/html/carreras/protected/views/site/galeria1.php",
 		"/var/www/html/carreras/protected/controllers/SiteController.php",
 		"/var/www/html/carreras/protected/views/site/administrador.php",
 		"/var/www/html/carreras/protected/views/layouts/main2.php",
 		"/var/www/html/carreras/protected/views/catCarreras/admin.php",
-		"/var/www/html/carreras/protected/views/registros/create.php",
 		"/var/www/html/carreras/css/telcel-styles.css",
 		"/var/www/html/carreras/protected/views/detalleCarerra/admin.php",
 		"/var/www/html/carreras/protected/controllers/CatCarrerasController.php",
@@ -197,7 +335,6 @@
 		"/var/www/html/encuestadh/protected/views/site/index.php",
 		"/var/www/html/encuestadh/protected/views/site/login.php",
 		"/home/cesar/Escritorio/usuarios.sql",
-		"/var/www/html/carreras/protected/config/main.php",
 		"/var/www/html/carreras/protected/models/Usuarios.php",
 		"/var/www/html/carreras/protected/components/UserIdentity.php",
 		"/var/www/html/carreras/protected/views/site/login.php",
@@ -298,14 +435,7 @@
 		"/home/cesar/Descargas/sitio-12 (2)/sitio-12/js/functions.js",
 		"/var/www/html/spdgm/.htaccess",
 		"/var/www/html/sitio/sindicato/validate_prueba4.php",
-		"/var/www/html/encuesta/index.php",
-		"/var/www/html/encuesta/mail.php",
-		"/var/www/html/encuesta/captura_datos.php",
-		"/var/www/html/sitio/sindicato/validate_login_org.php",
-		"/var/www/html/sitio/sindicato/test4.php",
-		"/home/cesar/Escritorio/cambios/sindicato/login.php",
-		"/var/www/html/sitio/sindicato/validate_logintelcel.php",
-		"/var/www/html/alertify/ejemplo.html"
+		"/var/www/html/encuesta/index.php"
 	],
 	"find":
 	{
@@ -323,6 +453,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"form",
+			"form-horizontal",
+			"60",
+			"row",
 			"Carreras",
 			"carreras",
 			"Carreras",
@@ -373,24 +507,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 12,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/controllers/RegistrosControllerresp.php",
+					"file": "protected/controllers/RegistrosController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5758,
+						"buffer_size": 4715,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5362,
-								5362
+								2262,
+								2262
 							]
 						],
 						"settings":
@@ -399,35 +533,363 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1188.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/cesar/Descargas/cifradophp/Aes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/cesar/Descargas/cifradophp/AesCtr.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/cesar/Descargas/cifradophp/ejemploAes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1412,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1406,
+								1406
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								393,
+								393
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/var/www/html/cifradophp/ejemploAes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1432,
+								1432
+							],
+							[
+								1446,
+								1446
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "protected/views/site/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 90715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4,
+								4
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "protected/views/layouts/main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								640,
+								640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "css/default.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1946,
+								1946
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 1296.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "css/stylefront.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19,
+								19
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "css/telcel-styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11912,
+								11912
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 12955.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2648,
+								2648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 3672.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "protected/controllers/RegistrosController.php",
+					"buffer": 12,
+					"file": "css/bootstrap.min.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4250,
+						"buffer_size": 122595,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								796,
-								796
+								122595,
+								122595
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/CSS/CSS.tmLanguage"
 						},
-						"translation.x": 0.0,
+						"translation.x": 9.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -435,12 +897,41 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 13,
+					"file": "css/form.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2787,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2786,
+								2786
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 2593.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
 					"file": "protected/views/registros/create.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 797,
+						"buffer_size": 724,
 						"regions":
 						{
 						},
@@ -461,24 +952,84 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "protected/views/registros/view.php",
+					"buffer": 15,
+					"file": "protected/views/registros/view2.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1079,
+						"buffer_size": 706,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1072,
-								1072
+								703,
+								703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "protected/views/registros/_yareg.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1134,
+								1134
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "protected/views/registros/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8036,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								296,
+								296
 							]
 						],
 						"settings":
@@ -487,15 +1038,44 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "protected/views/registros/_form.php",
+					"buffer": 18,
+					"file": "protected/models/Registros.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4698,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2894,
+								2894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1134.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "protected/views/registrosresp/_form.php",
 					"semi_transient": false,
 					"settings":
 					{
@@ -506,132 +1086,43 @@
 						"selection":
 						[
 							[
-								4763,
-								4763
+								439,
+								444
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1674.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/functions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8417,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8416,
-								8416
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "protected/views/layouts/main.php",
+					"buffer": 20,
+					"file": "protected/components/AesCtr.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1725,
+						"buffer_size": 7651,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1646,
-								1646
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "protected/views/site/index.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 89891,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1803,
-								1803
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2214.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "protected/config/main.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2229,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								352,
-								352
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -641,32 +1132,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "protected/models/Registros.php",
+					"buffer": 21,
+					"file": "protected/components/Utilities.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4638,
+						"buffer_size": 1580,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1551,
-								1551
+								1533,
+								1533
 							]
 						],
 						"settings":
 						{
+							"auto_name": "utilities.php",
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 324.0,
+						"translation.y": 1034.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -731,6 +1223,14 @@
 		[
 			[
 				"",
+				"/var/www/html/sigedo/sigedo.sublime-project"
+			],
+			[
+				"SITIO",
+				"/var/www/html/sitio/sitio.sublime-project"
+			],
+			[
+				"sitio",
 				"/var/www/html/sitio/sitio.sublime-project"
 			],
 			[

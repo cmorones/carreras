@@ -32,7 +32,7 @@ if (Yii::app()->getSession()->get('valido1')=="OK") {
                 </div>
                 <div class="telcel-fut-text">
 
-                  <p><h3 style="text-align:left;color:red;">Usted se ha registrado satisfactoriamente!!!!!!!!!!!!!</h3 ></p>
+                  <p><h3 style="text-align:left;color:red;">Usted ya se ha  sido registrado en esta carrera</h3 ></p>
 
                     <p>Cualquier pregunta o duda escríbenos un correo a:<bR><br /><a href="mailto:correyjuega@mail.telcel.com">correyjuega@mail.telcel.com</a></p>
                       <br />

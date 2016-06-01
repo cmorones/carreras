@@ -53,8 +53,8 @@ class Registros extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('carrera, distancia, tipo_usuario, id_empleado, id_invitado, nombre, apellido_paterno, apellido_materno, email, edad, sexo, ciudad, telefono, talla, status, paypal, sindicalizado, dorsal', 'required'),
-			array('carrera, distancia, tipo_usuario, edad, sexo, talla, status, sindicalizado, dorsal', 'numerical', 'integerOnly'=>true),
+			//array('carrera, distancia, nombre, apellido_paterno, apellido_materno, email, edad, sexo, ciudad, telefono, talla, status, paypal, sindicalizado, dorsal', 'required'),
+			//array('carrera, distancia, tipo_usuario, edad, sexo, talla, status, sindicalizado, dorsal', 'numerical', 'integerOnly'=>true),
 			array('id_empleado, id_invitado, nombre, apellido_paterno, apellido_materno, email, ciudad, telefono, paypal', 'length', 'max'=>100),
 			array('fecha', 'safe'),
 			// The following rule is used by search().
@@ -81,23 +81,23 @@ class Registros extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'carrera' => 'CARRERA',
-			'distancia' => 'DISTANCIA',
+			'carrera' => 'Carrera',
+			'distancia' => 'Distancia',
 			'tipo_usuario' => 'Tipo Usuario',
-			'id_empleado' => 'NUMERO DE EMPLEADO',
+			'id_empleado' => 'Id Empleado',
 			'id_invitado' => 'Id Invitado',
-			'nombre' => 'NOMBRE',
-			'apellido_paterno' => 'APELLIDO PATERNO',
-			'apellido_materno' => 'APELLIDO MATERNO',
-			'email' => 'EMAIL',
+			'nombre' => 'Nombre',
+			'apellido_paterno' => 'Apellido Paterno',
+			'apellido_materno' => 'Apellido Materno',
+			'email' => 'Email',
 			'edad' => 'Edad',
-			'sexo' => 'SEXO',
-			'ciudad' => 'CIUDAD',
-			'telefono' => 'TELEFONO',
-			'talla' => 'TALLA DE PLAYERA',
+			'sexo' => 'Sexo',
+			'ciudad' => 'Ciudad',
+			'telefono' => 'Telefono',
+			'talla' => 'Talla',
 			'status' => 'Status',
 			'paypal' => 'Paypal',
-			'sindicalizado' => '¿ERES SINDICALIZADO',
+			'sindicalizado' => 'Sindicalizado',
 			'dorsal' => 'Dorsal',
 			'fecha' => 'Fecha',
 		);

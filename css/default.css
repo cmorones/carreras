@@ -87,3 +87,11 @@ Supports Thumbs: true
 	width: 120px;
 	height: auto;
 }
+
+
+
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+}

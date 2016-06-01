@@ -28,7 +28,7 @@ class RegistrosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','create','view','registrado'),
+				'actions'=>array('create','index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -64,30 +64,37 @@ class RegistrosController extends Controller
 	{
 		$model=new Registros;
 
-		//$numeroNinos = Utilities::cuentaNinos();
+		$resultCarreras = CatCarreras::model()->findAll('status=1');
+        $carreras = array();
+        $carreras['falso'] = 'Seleccionar';
+        foreach ($resultCarreras as $key => $value) {
+            $carreras[$value->id] = "$value->ciudad";
+        }
+
+        $resultDistancia = CatDistancia::model()->findAll('tipo=1');
+        $carrerasdistancia = array();
+        $distancia['falso'] = 'Seleccionar';
+        foreach ($resultDistancia as $key => $value) {
+            $distancia[$value->id] = "$value->nombre";
+        }
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Registros']))
 		{
-			
+			$empleado = Yii::app()->getSession()->get('emp');
 			$model->attributes=$_POST['Registros'];
-			$model->edad=Utilities::edad($_POST['Registros']['fecha']);
-			/*$model->dorsal=Utilities::ultimoFolioEmp($_POST['Registros']['carrera']);
-			$valida=Utilities::verificaEmp($_POST['Registros']['carrera'],Yii::app()->getSession()->get('emp'));
-			if ($valida>0) {
-				$this->redirect(array('registrado'));
-			}else{*/
-
+			//$model->id_empleado = $empleado;
+			//$model->tipo_usuario = 1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
-			
-			
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'carreras'=>$carreras,
+			'distancia'=>$distancia
 		));
 	}
 
@@ -138,12 +145,6 @@ class RegistrosController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
-
-	public function actionRegistrado()
-	{
-		
-		$this->render('_yareg');
 	}
 
 	/**

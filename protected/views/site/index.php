@@ -1,6 +1,8 @@
 <?
 
 
+
+
 $sql ="SELECT
 cat_carreras.ciudad,
 cat_carreras.id,
@@ -23,12 +25,29 @@ cat_carreras.mostrar = 1";
 
 $info = Yii::app()->db->createCommand($sql)->queryRow();
 
-if (isset($_REQUEST['valido'])){
-$valido = $_REQUEST['valido'];
-$emp = 1234;
-}else {
-    $valido=false;
+if (Yii::app()->getSession()->get('valido1')!="OK") {
+
+    if (isset($_REQUEST['validado'])){
+    $validado = $_REQUEST['validado'];
+    $emp = $_REQUEST['emp'];
+
+    $AES =new AesCtr();
+    $descifra1 = base64_decode($validado);
+    $descifra2 = base64_decode($emp);
+
+    $descifravalidacion =$AES->decrypt($descifra1, 'Llave128r4Fv$B%t', 256);
+    $decifraemp=$AES->decrypt($descifra2, 'Llave128r4Fv$B%t', 256);
+
+     //echo $descifravalidacion. '<br>';
+     //echo $emp. '<br>';
+
+
+    }else {
+        $descifravalidacion=false;
+    }
+   
 }
+
 
 
 ?>
@@ -47,7 +66,25 @@ $emp = 1234;
 
 
 <div class="telcel-menu">
+ <?php
+                if (Yii::app()->getSession()->get('valido1')=="OK") {
+
+?>
+  <div class="session">
+            <img src="<?php echo Yii::app()->request->baseUrl;?>/images/user-icon.png" />
+            <div class="session-info">
+                <p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>
+                <a href="<?php echo CController::createUrl('site/logout'); ?>">Cerrar Sesión</a>                
+            </div>
+   </div>
+
+   <?php
+}
+
+?>
+
 	<div class="telcel-menu-cont">
+
         <ul class="scroll-menu">
             <li><a href="#top">Inicio</a></li>
             <li><a href="#what">¿Qué es el Circuito Sindicato Telcel?</a></li>
@@ -70,14 +107,19 @@ $emp = 1234;
             <!--<li><a href="http://www.marcate.com.mx/evento/SPTMCAR1442011544" target="_blank">Inscríbete a la Carrera</a></li>-->
             
             <?php
-                if ($valido) {
-                    Yii::app()->getSession()->add('valido1', $valido);
-                    Yii::app()->getSession()->add('emp', $emp);
+                if (Yii::app()->getSession()->get('valido1')!="OK" and $descifravalidacion=="OK") {
+                    Yii::app()->getSession()->add('valido1', $descifravalidacion);
+                    //Yii::app()->getSession()->add('empencrypt', $emp);
+                    Yii::app()->getSession()->add('emp', $decifraemp);
                     ?>
                     
                     <li><a href="<?php echo CController::createUrl('registros/create'); ?>">Inscríbete</a></li>
                     
                     <?php
+                }elseif (Yii::app()->getSession()->get('valido1')=="OK") {
+                   ?>
+                    <li><a href="<?php echo CController::createUrl('registros/create'); ?>">Inscríbete</a></li>
+                   <?php
                 }
             ?>
 
@@ -97,7 +139,10 @@ $emp = 1234;
                 </ul>
             </li>
             <li><a href="#gal">Galerías</a>
+            <li><a href="#contacto">Contacto</a></li>
+
         </ul>
+
     </div>
 </div>
 <div class="telcel-wrapper">
@@ -232,43 +277,52 @@ $emp = 1234;
 		</div>
     </div>
 </div>
+
+
 <div class="telcel-wrapper">
     <div class="telcel-container">        
         <div id="fut" class="telcel-fut telcel-section">
-        	<div class="telcel-fut-cont">
-            	<h2 class="header">FUTBOL</h2>
+            <div class="telcel-fut-cont">
+                <h2 class="header">FUTBOL</h2>
                 <div class="telcel-fut-logo">
-                	<img src="<?php echo Yii::app()->request->baseUrl;?>/images/logo-futbol.png" />
+                    <img src="<?php echo Yii::app()->request->baseUrl;?>/images/logo-futbol.png" />
                 </div>
                 <div class="telcel-fut-text">
-                	<p><strong>Estimado compañero Telcel:</strong></p>
+                    <p><strong>Estimado compañero Telcel:</strong></p>
                     <p>Es importante que recuerdes lo siguiente:</p>
                     <ul>
-                    	<li>El capitán será el responsable de recibir información, boletines y representara al equipo ante la liga. </li>
+                        <li>El capitán será el responsable de recibir información, boletines y representara al equipo ante la liga. </li>
                         <li>Es obligatorio para cada jugador acreditar su identidad con la credencial de empleado.</li>
                         <li><strong><i>Importante llegar 15 minutos antes de la hora de partido.</i></strong></li>
                     </ul>
                     <p>Para más información <a href="mailto:jmillan@playmarketing.mx">jmillan@playmarketing.mx</a>, <a href="mailto:pgutierrez@playmarketing.mx">pgutierrez@playmarketing.mx</a> o con la persona de contacto de tu localidad (RRHH).</p>
-                    <ul class="btn-menu-telcel">
-                        <li><a href="files/convocatoria-futbol.pdf" target="_blank">Convocatoria</a></li>
-                        <li><a href="files/reglamento-futbol-2015.pdf" target="_blank">Reglamento</a></li>
-                    </ul>
-                    <h3>CIUDADES Y/O <strong>SEDES</strong></h3>
-                   <ul class="menu-sedes">
-                        <li><a href="fut-df-corporativo.php" class="fut-link" rel="futbol-2">D.F. Corporativo</a></li>
-                        <li><a href="fut-df-metropolitano.php" class="fut-link" rel="futbol-2">D.F. Metropolitano</a></li>
-                        <li><a href="fut-merida.php" class="fut-link" rel="futbol-2">Mérida</a></li>
-                        <li><a href="fut-guadalajara.php" class="fut-link" rel="futbol-2">Guadalajara</a></li>
-                        <li><a href="fut-queretaro.php" class="fut-link" rel="futbol-2">Queretaro</a></li>
-                        <li><a href="fut-chihuahua.php?section=sind" class="fut-link" rel="futbol-2">Chihuahua</a></li>
-                        <li><a href="fut-tijuana.php" class="fut-link" rel="futbol-2">Tijuana</a></li>
-                        <li><a href="fut-puebla.php" class="fut-link" rel="futbol-2">Puebla</a></li>
-                        <li><a href="fut-monterrey.php" class="fut-link" rel="futbol-2">Monterrey</a></li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>
-	</div>
+    </div>
+</div>
+
+<div class="telcel-wrapper">
+    <div class="telcel-container">        
+        <div id="contacto" class="telcel-fut telcel-section">
+            <div class="telcel-contacto-cont">
+                <h2 class="header">CONTACTO</h2>
+                <div class="telcel-fut-logo">
+                    <img src="images/logo-futbol.png" />
+                </div>
+                <div class="telcel-fut-text">
+
+                  
+                    <p>Cualquier pregunta o duda escríbenos un correo a:<bR><br /><a href="mailto:correyjuega@mail.telcel.com">correyjuega@mail.telcel.com</a></p>
+                      <br />
+                      <p><strong>TELÉFONO DE CONTACTO</strong></p>
+                         <p>+52 1 55 6166 2855</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="telcel-wrapper">
     <div class="telcel-container">        

@@ -160,5 +160,12 @@ div.wide.form .row
 div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 {
 	clear: left;
+	color: red;
 	padding-left: 110px;
+}
+
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
 }
