@@ -19,7 +19,7 @@ $().ready(function() {
 		return false;
 	});
 });
-
+/*
 //Validae Login
 $().ready(function() {
 	// validate signup form on keyup and submit
@@ -68,7 +68,7 @@ function sendLogin() {
 }
 
 //Validate Register
-$().ready(function() {	
+/*$().ready(function() {	
 
 	$("#registro").validate({
 		rules: {
@@ -154,8 +154,8 @@ $().ready(function() {
 		}
 	});
 
-});
-
+});*/
+/*
 
 //Send Register
 function sendRegister() {
@@ -377,4 +377,4 @@ $().ready(function() {
 			alert("Los niños deben tener una edad mayor o igual a 4 años para poder participar")
 		}
 	});
-});
+});*/

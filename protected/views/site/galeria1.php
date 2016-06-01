@@ -1,0 +1,17 @@
+ <div class="gal-column">
+                    <div class="gal-column-innner">
+                        <h4 class="gal-inner-header">Chihuahua</h4>
+                        <ul>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_01.JPG" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_01.JPG" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_02.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_02.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_03.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_03.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_04.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_04.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_05.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_05.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_06.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_06.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_07.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_07.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_08.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_08.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_09.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_09.jpg" alt="" /></a></li>
+                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_10.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_10.jpg" alt="" /></a></li>
+                        </ul>
+                    </div>
+                </div>

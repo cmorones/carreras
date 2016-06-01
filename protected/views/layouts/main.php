@@ -12,8 +12,9 @@
 		$baseUrl = Yii::app()->request->baseUrl; 
 		$cs = Yii::app()->getClientScript();
 		Yii::app()->clientScript->registerCoreScript('jquery');
+        $cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
         $cs->registerCssFile($baseUrl.'/css/telcel-styles.css');
-        $cs->registerCssFile($baseUrl.'/easy-slider.css');
+        $cs->registerCssFile($baseUrl.'/css/easy-slider.css');
         $cs->registerCssFile($baseUrl.'/css/default.css');
        // $cs->registerCssFile($baseUrl.'/css/main.css');
         $cs->registerCssFile($baseUrl.'/css/colorbox.css');
@@ -27,11 +28,10 @@
 
 <body id="top">
 
+
 <?php echo $content; ?>
 <div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		
 </div><!-- footer -->
 
 </body>

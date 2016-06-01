@@ -32,6 +32,15 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionAdministrador()
+	{
+		$this->layout='//layouts/main2';
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+		$this->render('administrador');
+	}
+
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -76,8 +85,14 @@ class SiteController extends Controller
 	 * Displays the login page
 	 */
 	public function actionLogin()
+		
 	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+		
 		$model=new LoginForm;
+
+		$this->layout='//layouts/login';
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -92,7 +107,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+				 $this->redirect(array('site/administrador'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -103,6 +118,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
+		Yii::app()->getSession()->remove('validado');
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}

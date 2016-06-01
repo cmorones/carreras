@@ -1,0 +1,224 @@
+<?php
+
+class RegistrosController extends Controller
+{
+	/**
+	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+	 * using two-column layout. See 'protected/views/layouts/column2.php'.
+	 */
+	public $layout='//layouts/column2';
+
+	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
+		);
+	}
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view','create'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionView($id)
+	{
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+
+	/**
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionCreate()
+	{
+		$model=new Registros;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+/* $resultEjercicio = TipoDoc::model()->findAll('permiso=1');
+
+        $ejercicio = array();
+        $ejercicio['false'] = 'Selecciona tipo de documento';
+        foreach ($resultEjercicio as $key => $value) {
+            $ejercicio[$value->id] = $value->nombre;
+        }
+
+        */
+		$resultCarreras = CatCarreras::model()->findAll('status=1');
+        $carreras = array();
+        $carreras['falso'] = 'Seleccionar';
+        foreach ($resultCarreras as $key => $value) {
+            $carreras[$value->id] = "$value->ciudad";
+        }
+
+        $resultDistancia = CatDistancia::model()->findAll('tipo=1');
+        $carrerasdistancia = array();
+        $distancia['falso'] = 'Seleccionar';
+        foreach ($resultDistancia as $key => $value) {
+            $distancia[$value->id] = "$value->nombre";
+        }
+
+		if(isset($_POST['Registros']))
+		{
+			
+			$empleado = Yii::app()->getSession()->get('emp');
+			$model->attributes=$_POST['Registros'];
+			$model->id_empleado = $empleado;
+			$model->tipo_usuario = 1;
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+			'carreras'=>$carreras,
+			'distancia'=>$distancia
+		));
+	}
+
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionUpdate($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Registros']))
+		{
+			$model->attributes=$_POST['Registros'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	/**
+	 * Deletes a particular model.
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDelete($id)
+	{
+		$this->loadModel($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$dataProvider=new CActiveDataProvider('Registros');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+
+	/**
+	 * Manages all models.
+	 */
+	public function actionAdmin()
+	{
+		$model=new Registros('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Registros']))
+			$model->attributes=$_GET['Registros'];
+
+		$this->render('admin',array(
+			'model'=>$model,
+		));
+	}
+
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return Registros the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadModel($id)
+	{
+		$model=Registros::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+
+	/**
+	 * Performs the AJAX validation.
+	 * @param Registros $model the model to be validated
+	 */
+	protected function performAjaxValidation($model)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='registros-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+	}
+
+	public function ultimoFolio($id_area){
+
+
+	$sql_lid = "SELECT 
+  max (registros.dorsal) as dorsal 
+FROM 
+  public.registors, 
+WHERE 
+  correspondencia.destinatario = directorio.id AND
+  directorio.id_area = $id_area and correspondencia.estado=1 and (correspondencia.fecha_acuse between '".$this->fechaInicioActivo()."' and '".$this->fechaFinActivo()."');
+";
+
+		
+		$lid = Yii::app()->db->createCommand($sql_lid)->queryRow();		
+					
+		if( $lid['folio'] !=0 ){
+			return $lid['folio']+1; 
+		}else{
+			return 0+1; 
+		}
+
+	}
+}

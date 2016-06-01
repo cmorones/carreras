@@ -40,34 +40,59 @@
 	"buffers":
 	[
 		{
-			"file": "protected/views/site/index.php",
+			"file": "protected/controllers/RegistrosControllerresp.php",
 			"settings":
 			{
-				"buffer_size": 91949,
+				"buffer_size": 5758,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "index.php",
+			"file": "protected/controllers/RegistrosController.php",
 			"settings":
 			{
-				"buffer_size": 460,
+				"buffer_size": 4250,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/var/www/html/sitio/registros/t3lc3l-r3g1-n1n0s.xls.12012015",
+			"contents": "<?php \n\n$validado = Yii::app()->getSession()->get('valido1');\n\nif ($validado) {\n    \n\n\n?>\n<div class=\"telcel-menu\">\n	<div class=\"telcel-menu-cont\">\n        <ul>\n            <li><a href=\"<?php echo CController::createUrl('site/index',array('valido'=>$validado)); ?>\">Volver</a></li>\n        </ul>\n        <div class=\"session\">\n        	<img src=\"../images/user-icon.png\" />\n            <div class=\"session-info\">\n            	<p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>\n                <a href=\"<?php echo CController::createUrl('site/logout'); ?>\">Cerrar Sesión</a>                \n            </div>\n        </div>\n    </div>\n</div>\n\n<?php echo $this->renderPartial('_form', array(\n    'model'=>$model,\n    'carreras'=>$carreras,\n    'distancia'=>$distancia\n    )); \n\n}\n?>\n\n",
+			"file": "protected/views/registros/create.php",
+			"file_size": 798,
+			"file_write_time": 131091947126545609,
 			"settings":
 			{
-				"buffer_size": 5597,
+				"buffer_size": 797,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/var/www/html/sitio/registros/t3lc3l-r3g1str0s.php",
+			"contents": "<?php \n\n$validado = Yii::app()->getSession()->get('valido1');\n\nif ($validado) {\n    \n\n\n?>\n<div class=\"telcel-menu\">\n	<div class=\"telcel-menu-cont\">\n        <ul>\n            <li><a href=\"<?php echo CController::createUrl('site/index',array('valido'=>$validado)); ?>\">Volver</a></li>\n        </ul>\n        <div class=\"session\">\n        	<img src=\"../images/user-icon.png\" />\n            <div class=\"session-info\">\n            	<p>Empleado: <? echo Yii::app()->getSession()->get('emp'); ?></p>\n                <a href=\"<?php echo CController::createUrl('site/logout'); ?>\">Cerrar Sesión</a>                \n            </div>\n        </div>\n    </div>\n</div>\n<?php $this->widget('zii.widgets.CDetailView', array(\n	'data'=>$model,\n	'attributes'=>array(\n		'id',\n		'carrera',\n		'distancia',\n		'tipo_usuario',\n		'id_empleado',\n		'id_invitado',\n		'nombre',\n		'apellido_paterno',\n		'apellido_materno',\n		'email',\n		'edad',\n		'sexo',\n		'ciudad',\n		'telefono',\n		'talla',\n		'status',\n		'paypal',\n		'sindicalizado',\n		'dorsal',\n		'fecha',\n	),\n)); ?>\n\n<h1>Se registro correctamente!!!!</h1>\n\n",
+			"file": "protected/views/registros/view.php",
+			"file_size": 1080,
+			"file_write_time": 131091949868479014,
 			"settings":
 			{
-				"buffer_size": 1363,
+				"buffer_size": 1079,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n<?php\n	$empleado = Yii::app()->getSession()->get('emp');\n?>\n<div class=\"telcel-wrapper\">\n    <div class=\"telcel-container\"> \n        <div id=\"sus\" class=\"telcel-sus telcel-section\">\n            <div class=\"telcel-sus-cont\">\n                <h2 class=\"header\">INSCRÍBETE AQUÍ</h2>\n                \n                 \n<div class=\"form\">\n\n<?php $form=$this->beginWidget('CActiveForm', array(\n	'id'=>'registros-form',\n	'enableAjaxValidation'=>false,\n)); ?>\n\n	\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'carrera'); ?>\n	    <?php echo $form->dropDownList($model, 'carrera', $carreras, array('id' => 'carreras'));?><bR>\n		<?php echo $form->error($model,'carrera'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'distancia'); ?>\n		<?php echo $form->dropDownList($model, 'distancia', $distancia, array('id' => 'carreras'));?>\n		<?php echo $form->error($model,'distancia'); ?>\n	</div>\n\n	<!--<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'tipo_usuario'); ?>\n		<?php echo $form->textField($model,'tipo_usuario',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'tipo_usuario'); ?>\n	</div>\n		-->\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'id_empleado'); ?>\n		<strong><span style=\"color:red;\"><?=$empleado?></span></strong>\n	</div>\n\n<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'sindicalizado'); ?>\n		<?php \n		\n		$sindicalizado['falso']=\"Seleccionar\";\n		$sindicalizado[0]=\"NO\";\n		$sindicalizado[1]=\"SI\";\n		echo $form->dropDownList($model, 'sindicalizado', $sindicalizado, array('id' => 'sindicalizado'));?>\n		<?php echo $form->error($model,'sindicalizado'); ?>\n	</div>\n\n<!--	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'id_invitado'); ?>\n		<?php echo $form->textField($model,'id_invitado',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'id_invitado'); ?>\n	</div>-->\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'nombre'); ?>\n		<?php echo $form->textField($model,'nombre',array('size'=>60,'maxlength'=>100)); ?><bR>\n		<?php echo $form->error($model,'nombre'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'apellido_paterno'); ?>\n		<?php echo $form->textField($model,'apellido_paterno',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'apellido_paterno'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'apellido_materno'); ?>\n		<?php echo $form->textField($model,'apellido_materno',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'apellido_materno'); ?>\n	</div>\n\n		<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'email'); ?>\n		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'email'); ?>\n	</div>\n\n		<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'fecha'); ?>\n		 <?php\n                        $this->widget('zii.widgets.jui.CJuiDatePicker', array(\n                            'model'=>$model,\n                            'attribute'=>'fecha',\n\n\n                            // additional javascript options for the date picker plugin\n                            'options' => array(\n                                'dateFormat'=>'yy-mm-dd',\n                                'showAnim' => 'fold',\n                                'changeMonth' => true,\n                                'changeYear' => true,\n                                'monthNames' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),\n                                'monthNamesShort' => array('Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'),\n                                'dayNames' => array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'),\n                                'dayNamesShort' => array('Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'),\n                                'dayNamesMin' => array('Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'),\n                                'yearRange' => '1970:2016'\n                            ),\n                            'htmlOptions' => array(\n                                'style' => 'height:30px;width:100px;',\n                                'id'=>'fecha',\n                                //'class'=>'span12'\n                               \n                            ),\n                        ));\n                      \n ?>\n		<?php echo $form->error($model,'fecha'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'sexo'); ?>\n		<?php \n		$sexo['falso']=\"Seleccionar\";\n		$sexo[1]=\"MASCULINO\";\n		$sexo[2]=\"FEMENINO\";\n		echo $form->dropDownList($model, 'sexo', $sexo, array('id' => 'sexo'));?>\n		\n		<?php echo $form->error($model,'sexo'); ?>\n	</div>\n\n\n\n\n\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'ciudad'); ?>\n		<?php echo $form->textField($model,'ciudad',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'ciudad'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'telefono'); ?>\n		<?php echo $form->textField($model,'telefono',array('size'=>60,'maxlength'=>100)); ?>\n		<?php echo $form->error($model,'telefono'); ?>\n	</div>\n\n	<div class=\"input-wrap\">\n		<?php echo $form->labelEx($model,'talla'); ?>\n		<?php \n\n		$talla['falso']=\"Seleccionar\";\n		$talla[1]=\"CHICA\";\n		$talla[2]=\"MEDIANA\";\n		$talla[3]=\"GRANDE\";\n		echo $form->dropDownList($model, 'talla', $talla, array('id' => 'talla'));?>\n		\n		<?php echo $form->error($model,'talla'); ?>\n	</div>\n\n	\n\n	\n	<div class=\"submit-wrap\">\n		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar' : 'Guardar'); ?>\n	</div>\n\n<?php $this->endWidget(); ?>\n\n</div><!-- form -->\n            </div>\n        </div>\n    </div>  \n</div>\n<div class=\"col-lg-4\">\n</div>\n<div class=\"col-lg-4\">\n <div class=\"links-otros\">\n	  \n      <a href=\"<?php echo CController::createUrl('catCarreras/create'); ?>\" class=\"btn-sm btn btn-info pull-left\"><i class=\"glyphicon glypicon-plus\"></i>Inscribir a un Invitado</a>\n      \n      <a href=\"<?php echo CController::createUrl('catCarreras/create'); ?>\" class=\"btn-sm btn btn-info pull-left\"><i class=\"glyphicon glypicon-plus\"></i>Inscribir a un Niño</a>\n</div>\n                        \n</div>\n                      ",
+			"file": "protected/views/registros/_form.php",
+			"file_size": 6406,
+			"file_write_time": 131091952614372438,
+			"settings":
+			{
+				"buffer_size": 6398,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/functions.js",
+			"settings":
+			{
+				"buffer_size": 8417,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,23 +100,31 @@
 			"file": "protected/views/layouts/main.php",
 			"settings":
 			{
-				"buffer_size": 1776,
+				"buffer_size": 1725,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/telcel-styles.css",
+			"file": "protected/views/site/index.php",
 			"settings":
 			{
-				"buffer_size": 11867,
-				"line_ending": "Windows"
+				"buffer_size": 89891,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/main.css",
+			"file": "protected/config/main.php",
 			"settings":
 			{
-				"buffer_size": 2563,
+				"buffer_size": 2229,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/models/Registros.php",
+			"settings":
+			{
+				"buffer_size": 4638,
 				"line_ending": "Unix"
 			}
 		}
@@ -129,14 +162,52 @@
 	"expanded_folders":
 	[
 		"/var/www/html/carreras",
+		"/var/www/html/carreras/css",
+		"/var/www/html/carreras/css/plugins",
+		"/var/www/html/carreras/js",
 		"/var/www/html/carreras/protected",
+		"/var/www/html/carreras/protected/components",
 		"/var/www/html/carreras/protected/config",
+		"/var/www/html/carreras/protected/controllers",
+		"/var/www/html/carreras/protected/models",
 		"/var/www/html/carreras/protected/views",
+		"/var/www/html/carreras/protected/views/catCarreras",
+		"/var/www/html/carreras/protected/views/detalleCarerra",
 		"/var/www/html/carreras/protected/views/layouts",
 		"/var/www/html/carreras/protected/views/site"
 	],
 	"file_history":
 	[
+		"/var/www/html/carreras/protected/views/site/index.php",
+		"/var/www/html/carreras/protected/views/registros/_form.php",
+		"/var/www/html/carreras/protected/views/layouts/main.php",
+		"/var/www/html/carreras/protected/controllers/RegistrosController.php",
+		"/var/www/html/carreras/protected/views/site/galeria1.php",
+		"/var/www/html/carreras/protected/controllers/SiteController.php",
+		"/var/www/html/carreras/protected/views/site/administrador.php",
+		"/var/www/html/carreras/protected/views/layouts/main2.php",
+		"/var/www/html/carreras/protected/views/catCarreras/admin.php",
+		"/var/www/html/carreras/protected/views/registros/create.php",
+		"/var/www/html/carreras/css/telcel-styles.css",
+		"/var/www/html/carreras/protected/views/detalleCarerra/admin.php",
+		"/var/www/html/carreras/protected/controllers/CatCarrerasController.php",
+		"/var/www/html/carreras/protected/controllers/DetalleCarerraController.php",
+		"/home/cesar/Escritorio/detalle_carrera.sql",
+		"/var/www/html/carreras/protected/views/site/_form.php",
+		"/var/www/html/encuestadh/protected/views/site/index.php",
+		"/var/www/html/encuestadh/protected/views/site/login.php",
+		"/home/cesar/Escritorio/usuarios.sql",
+		"/var/www/html/carreras/protected/config/main.php",
+		"/var/www/html/carreras/protected/models/Usuarios.php",
+		"/var/www/html/carreras/protected/components/UserIdentity.php",
+		"/var/www/html/carreras/protected/views/site/login.php",
+		"/var/www/html/encuestadh/protected/controllers/SiteController.php",
+		"/var/www/html/carreras/protected/views/layouts/login.php",
+		"/var/www/html/carreras/index.php",
+		"/var/www/html/sitio/registros/t3lc3l-r3g1-n1n0s.xls.12012015",
+		"/var/www/html/sitio/registros/t3lc3l-r3g1str0s.php",
+		"/var/www/html/carreras/.htaccess",
+		"/var/www/html/carreras/css/main.css",
 		"/home/cesar/Escritorio/cambio11052016/index.php",
 		"/home/cesar/Escritorio/cambio11052016/sindicato/index.php",
 		"/var/www/html/sitio/fut-df-corporativo.php",
@@ -234,37 +305,7 @@
 		"/var/www/html/sitio/sindicato/test4.php",
 		"/home/cesar/Escritorio/cambios/sindicato/login.php",
 		"/var/www/html/sitio/sindicato/validate_logintelcel.php",
-		"/var/www/html/alertify/ejemplo.html",
-		"/home/cesar/Escritorio/cambios/sindicato/validate_login.php",
-		"/var/www/html/alertify/grunt.js",
-		"/var/www/html/sigedo/protected/views/documentos/_form.php",
-		"/var/www/html/sitio/sindicato/test3.php",
-		"/var/www/html/sitio/sindicato/test1.php",
-		"/var/www/html/sitio/sindicato/prueba_web4.php",
-		"/home/cesar/Descargas/correyjuegadb.15032016.sql",
-		"/var/www/html/sigedo/protected/controllers/ApipdfController.php",
-		"/var/www/html/sedeco/protected/controllers/ApipdfController.php",
-		"/var/www/html/sedeco/protected/views/site/page67.php",
-		"/var/www/html/sedeco/protected/views/site/page55.php",
-		"/var/www/html/sigedo/protected/views/main/index.php",
-		"/var/www/html/sigedo/protected/views/documentos/_form2.php",
-		"/var/www/html/sigedo/protected/controllers/DocumentosController.php",
-		"/var/www/html/sigedo/protected/views/informes/_salida.php",
-		"/var/www/html/sigedo/protected/views/informes/_turnos.php",
-		"/var/www/html/sigedo/protected/views/informes/index.php",
-		"/var/www/html/sigedo/protected/controllers/InformesController.php",
-		"/var/www/html/sigedo/protected/views/documentos/_formc.php",
-		"/var/www/html/sigedo/protected/views/documentos/create2.php",
-		"/var/www/html/sigedo/protected/views/layouts/main.php",
-		"/var/www/html/sigedo/sigedo.sublime-project",
-		"/var/www/html/sigedo/protected/config/main.php",
-		"/var/www/html/sigedo/protected/controllers/TurnosController.php",
-		"/var/www/html/sigedo/protected/views/turnos/_form.php",
-		"/home/cesar/Descargas/lab_ciencias.out",
-		"/var/www/html/silac/app3/controllers/consultas_controller.php",
-		"/var/www/html/sigedo/protected/controllers/CorrespondenciaController.php",
-		"/var/www/html/silac/app/config/database.php",
-		"/var/www/html/intra_ppe/app/config/database.php"
+		"/var/www/html/alertify/ejemplo.html"
 	],
 	"find":
 	{
@@ -282,6 +323,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Carreras",
+			"carreras",
+			"Carreras",
+			"caracter",
+			"Caracter",
+			"caracter",
+			"row",
 			"fut",
 			"images",
 			"fut-df-metropolitano.php",
@@ -314,6 +362,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"T"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -324,74 +373,74 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/views/site/index.php",
+					"file": "protected/controllers/RegistrosControllerresp.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 91949,
+						"buffer_size": 5758,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3446,
-								3446
+								5362,
+								5362
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 1188.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "index.php",
+					"file": "protected/controllers/RegistrosController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 460,
+						"buffer_size": 4250,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								78,
-								78
+								796,
+								796
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/var/www/html/sitio/registros/t3lc3l-r3g1-n1n0s.xls.12012015",
+					"file": "protected/views/registros/create.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5597,
+						"buffer_size": 797,
 						"regions":
 						{
 						},
@@ -404,58 +453,119 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "/var/www/html/sitio/registros/t3lc3l-r3g1str0s.php",
+					"file": "protected/views/registros/view.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1363,
+						"buffer_size": 1079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								314,
-								314
+								1072,
+								1072
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "protected/views/registros/_form.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6398,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4763,
+								4763
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1674.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/functions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8416,
+								8416
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "protected/views/layouts/main.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1776,
+						"buffer_size": 1725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								526,
-								526
+								1646,
+								1646
 							]
 						],
 						"settings":
@@ -465,68 +575,98 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "css/telcel-styles.css",
+					"buffer": 7,
+					"file": "protected/views/site/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11867,
+						"buffer_size": 89891,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								185,
-								185
+								1803,
+								1803
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1134.0,
+						"translation.y": 2214.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "css/main.css",
+					"buffer": 8,
+					"file": "protected/config/main.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2563,
+						"buffer_size": 2229,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								286,
-								286
+								352,
+								352
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "protected/models/Registros.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1551,
+								1551
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -591,7 +731,19 @@
 		[
 			[
 				"",
-				"/var/www/html/sigedo/sigedo.sublime-project"
+				"/var/www/html/sitio/sitio.sublime-project"
+			],
+			[
+				"in",
+				"/var/www/html/inspinia/inspinia.sublime-project"
+			],
+			[
+				"siti",
+				"/var/www/html/sitio/sitio.sublime-project"
+			],
+			[
+				"en",
+				"/var/www/html/encuestadh/encuestadh.sublime-project"
 			],
 			[
 				"se",

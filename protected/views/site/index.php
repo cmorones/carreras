@@ -1,3 +1,51 @@
+<?
+
+
+$sql ="SELECT
+cat_carreras.ciudad,
+cat_carreras.id,
+detalle_carrera.titulo,
+detalle_carrera.subtitulo,
+detalle_carrera.fecha,
+detalle_carrera.distancia,
+detalle_carrera.horario,
+detalle_carrera.cupo,
+detalle_carrera.rutaImg,
+detalle_carrera.rutaKit,
+detalle_carrera.rutaFile,
+detalle_carrera.img_paisaje,
+detalle_carrera.fecha_evento
+FROM
+cat_carreras
+INNER JOIN detalle_carrera ON cat_carreras.id = detalle_carrera.id_carrera
+WHERE
+cat_carreras.mostrar = 1";
+
+$info = Yii::app()->db->createCommand($sql)->queryRow();
+
+if (isset($_REQUEST['valido'])){
+$valido = $_REQUEST['valido'];
+$emp = 1234;
+}else {
+    $valido=false;
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="telcel-menu">
 	<div class="telcel-menu-cont">
         <ul class="scroll-menu">
@@ -20,6 +68,19 @@
             <li><a href="#consejos">Consejos</a></li>
             <!--<li><a href="#run">Inscríbete a la Carrera</a></li>-->
             <!--<li><a href="http://www.marcate.com.mx/evento/SPTMCAR1442011544" target="_blank">Inscríbete a la Carrera</a></li>-->
+            
+            <?php
+                if ($valido) {
+                    Yii::app()->getSession()->add('valido1', $valido);
+                    Yii::app()->getSession()->add('emp', $emp);
+                    ?>
+                    
+                    <li><a href="<?php echo CController::createUrl('registros/create'); ?>">Inscríbete</a></li>
+                    
+                    <?php
+                }
+            ?>
+
             <li><a href="#fut">Futbol</a>
             	<ul class="sub-menu">
                 	  
@@ -70,9 +131,9 @@
         <div id="run" class="telcel-run telcel-section">
         	<div class="telcel-run-cont">
 				<h2 class="header">CARRERA</h2>
-                <h3><strong>1a. Carrera Sindicato Telcel Querétaro 5 y 10 Km 5 de Junio de 2016</strong></h3>
+                <h3><strong><?=$info['titulo']?></strong></h3>
                 <div class="countdown-cont">
-                	<h4 class="header3-blue">QUERÉTARO</h4>
+                	<h4 class="header3-blue"><?=$info['ciudad']?></h4>
                     <ul class="countdown3">
                         <li> <span class="days">00</span>
                         <p class="days_ref">días</p>
@@ -93,20 +154,18 @@
                 </div>
                 <div class="telcel-challenge">
                     <div class="telcel-challenge-item center-challenge">
-                    	<img src="<?php echo Yii::app()->request->baseUrl;?>/images/imagen-queretaro.jpg" alt="Carrera Sindicato Telcel D.F." />
+                    	<img src="<?php echo Yii::app()->request->baseUrl;?>/images/<?=$info['img_paisaje']?>" alt="Carrera Sindicato Telcel D.F." />
                         <div class="challenge-text">
-                       	  <h4>1a Carrera <br /><strong> Sindicato Telcel Querétaro</strong></h4>
-                          	<p><strong>Fecha:</strong> Domingo 5 de Junio de 2016<br />
+                       	  <h4><?=$info['subtitulo']?><br /><strong> Sindicato Telcel Querétaro</strong></h4>
+                          	<p><strong>Fecha:</strong><?=$info['fecha']?><br />
                            <!-- <strong>Lugar:</strong><br /> -->
-                            <strong>Distancias:</strong> 5K y 10K<br />
-                            <strong>Horario de salida:</strong> 8:00 a.m.<br />
-                            (Te esperamos desde las 6:00 a.m.)<br />
-							<strong>Cupo limitado:</strong> 800 corredores<br />
+                            <strong>Distancias:</strong><?=$info['distancia']?><br />
+                            
                             <ul>
-                              <li><a class="rutas" href="<?php echo Yii::app()->request->baseUrl;?>/images/ruta_qro.jpg" rel="rutas" title="Ruta 5K y 10K">Ver Rutas</a></li>
+                              <li><a class="rutas" href="<?php echo Yii::app()->request->baseUrl;?>/images/<?=$info['rutaImg']?>" rel="rutas" title="<?=$info['rutaImg']?>">Ver Rutas</a></li>
                               <!--<li><a class="rutas" href="images/estacionamientos-df.jpg" rel="rutas" title="Estacionamientos">Ver Estacionamientos</a></li>-->
-                              <li><a class="rutas" href="images/kit_qro.jpg" >Entrega de Kits</a></li>
-                              <li><a href="<?php echo Yii::app()->request->baseUrl;?>/files/convocatoria_qro.pdf" target="_blank">Ver convocatoria</a></li>
+                              <li><a class="rutas" href="images/<?=$info['rutaKit']?>" >Entrega de Kits</a></li>
+                              <li><a href="<?php echo Yii::app()->request->baseUrl;?>/files/<?=$info['rutaFile']?>" target="_blank">Ver convocatoria</a></li>
                               <!--<li><a href="http://marcate.com.mx/evento/SPTMCAR1445440668" target="_blank">Inscríbete aquí</a></li>-->
                           </ul>
                         </div>
@@ -123,6 +182,16 @@
             </div>
         </div>
 	</div>
+</div>
+<div class="telcel-wrapper">
+    <div class="telcel-container"> 
+        <div id="sus" class="telcel-sus telcel-section">
+            <div class="telcel-sus-cont">
+                <h2 class="header">INSCRÍBETE AQUÍ</h2>
+           
+            </div>
+        </div>
+    </div>  
 </div>
 <div class="telcel-wrapper">
     <div class="telcel-container-full bg-run">
@@ -387,23 +456,7 @@
           
             <h3>Carreras 2015</h3>
             <div class="gal-wrapper">
-                <div class="gal-column">
-                    <div class="gal-column-innner">
-                        <h4 class="gal-inner-header">Chihuahua</h4>
-                        <ul>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_01.JPG" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_01.JPG" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_02.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_02.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_03.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_03.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_04.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_04.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_05.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_05.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_06.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_06.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_07.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_07.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_08.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_08.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_09.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_09.jpg" alt="" /></a></li>
-                            <li><a href="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_10.jpg" rel="gal-chi-2015" class="galerias-link"><img src="<?php echo Yii::app()->request->baseUrl;?>/images/carreras/2015/chihuahua/chihuahua_2015_10.jpg" alt="" /></a></li>
-                        </ul>
-                    </div>
-                </div>
+              <?php require_once('galeria1.php')?>
                 <div class="gal-column">
                     <div class="gal-column-innner">
                         <h4 class="gal-inner-header">Merida</h4>
@@ -542,7 +595,7 @@
 			offset: -5
 		});
 		$('.countdown3').downCount({
-			date: '06/05/2016 08:00:00',
+			date: '<?=$info['fecha_evento']?>',
 			offset: -5
 		});
 		/*$('#slider').nivoSlider({
